@@ -452,6 +452,7 @@ def test_NonRenewable_ConstantRenewable():
 #-------------------Tasklets-------------------------
 def test_NonRenewable_Tasklets():
     lengthOfTimeUnderStudy = 20
+    
     task1 = Task(1,0.5,0,9)
     tasklet11 = Tasklet(1,5)
     tasklet11.powerConsumption = np.random.randint(5,9,(3))
@@ -460,6 +461,7 @@ def test_NonRenewable_Tasklets():
     tasklet12.powerConsumption = np.random.randint(2,7,(3))
     tasklet12.setTaskletLength()
     task1.tasklets = [tasklet11,tasklet12]
+    
     task2 = Task(2,0.5,2,6)
     task2.setTaskLength()
     tasklet21 = Tasklet(1,3)
@@ -472,7 +474,34 @@ def test_NonRenewable_Tasklets():
     tasklet23.powerConsumption = np.random.randint(3,5,(2))
     tasklet23.setTaskletLength()
     task2.tasklets = [tasklet21,tasklet22,tasklet23]
-    taskList = [task1,task2]
+    
+    task3 = Task(2,0.5,2,6)
+    task3.setTaskLength()
+    tasklet31 = Tasklet(1,3)
+    tasklet31.powerConsumption = np.random.randint(1,4,(4))
+    tasklet31.setTaskletLength()
+    tasklet32 = Tasklet(2,2)
+    tasklet32.powerConsumption = np.random.randint(3,8,(2))
+    tasklet32.setTaskletLength()
+    tasklet33 = Tasklet(3,0)
+    tasklet33.powerConsumption = np.random.randint(3,5,(2))
+    tasklet33.setTaskletLength()
+    task3.tasklets = [tasklet31,tasklet32,tasklet33]
+    
+    task4 = Task(2,0.5,2,6)
+    task4.setTaskLength()
+    tasklet41 = Tasklet(1,1)
+    tasklet41.powerConsumption = np.random.randint(1,4,(4))
+    tasklet41.setTaskletLength()
+    tasklet42 = Tasklet(2,4)
+    tasklet42.powerConsumption = np.random.randint(1,3,(2))
+    tasklet42.setTaskletLength()
+    tasklet43 = Tasklet(3,0)
+    tasklet43.powerConsumption = np.random.randint(3,5,(2))
+    tasklet43.setTaskletLength()
+    task4.tasklets = [tasklet41,tasklet42,tasklet43]
+    
+    taskList = [task1,task2,task3,task4]
     allowableSchedules = generatePossibleAllowableSchedulesWithTasklets(taskList,lengthOfTimeUnderStudy)
     renewablePowerSchedule = np.random.randint(5,10,(lengthOfTimeUnderStudy))
     bestEnergyConsumptionSchedule = optimizePowerSchedules_NonRenewable(allowableSchedules,lengthOfTimeUnderStudy,renewablePowerSchedule)
