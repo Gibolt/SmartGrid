@@ -505,3 +505,9 @@ def test_NonRenewable_Tasklets():
     renewablePowerSchedule = np.random.randint(5,10,(lengthOfTimeUnderStudy))
     bestEnergyConsumptionSchedule = optimizePowerSchedules_NonRenewable(allowableSchedules,lengthOfTimeUnderStudy,renewablePowerSchedule)
     return renewablePowerSchedule,bestEnergyConsumptionSchedule
+
+#-----------------Manager--------------------
+'''This is mostly a test commit from linux'''
+class Manager(object):
+    def __init__(self):
+        return 0
